@@ -12,8 +12,15 @@ var enableProfile=function(intfName, ssid, p){
     console.log(stdout);
   });
 
-  cmd = 'netsh interface ip set dnsserver name="%s" static %s primary'
+  cmd = 'netsh interface ip add dns name="%s" addr="%s"'
   cmd = util.format(cmd, intfName, p.dns)
+  console.log(cmd);
+  exec(cmd, function(error, stdout, stderr){
+    console.log(stdout);
+  });
+
+  cmd = 'netsh interface ip add dns name="%s" addr="%s" index=2'
+  cmd = util.format(cmd, intfName, p.dns2)
   console.log(cmd);
   exec(cmd, function(error, stdout, stderr){
     console.log(stdout);
@@ -28,7 +35,7 @@ var enableDHCP=function(intfName, ssid){
   exec(cmd, function(error,stdout,stderr){
     console.log(stdout);
   });
-  
+
   cmd = 'netsh interface ip set dnsserver name="%s" source=dhcp'
   cmd = util.format(cmd, intfName)
   console.log(cmd);
@@ -63,7 +70,3 @@ exec('netsh wlan show interfaces', function(error, stdout, stderr) {
     enableDHCP(intfName, ssid);
   }
 });
-
-
-
-
