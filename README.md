@@ -8,8 +8,8 @@
     - Name: Wi-Fi-profile-manager
     - Select SYSTEM as user for running the task
     - Select your OS at the bottom dropdown menu
-  - Switch to the Trigger Tab and create a new one
-    - Start at: event
+  - Switch to the Trigger tab and create a new one
+    - Start at: Event
     - Protocol: Microsoft-Windows-WLAN-AutoConfig/Operational
     - Source: WLAN-AutoConfig
     - Event id: 11001
